@@ -1,41 +1,20 @@
-import React from "react";
+import { Routes, Route } from "react-router-dom";
+import ListadoPropiedad from "./components/ListadoPropiedad";
+import CasaPlayaPU from "./components/CasaPlayaPU";
+import BungalowF from "./components/BungalowF";
 import "./App.css";
-import { Link } from "react-router-dom";
 
-const propiedades = [
-  {
-    nombre: "Casa en la Playa, Punta Uva, Limón",
-    descripcion: "A 200mts de la playa",
-    precioBase: 120,
-    temporada: "alta",
-    imagen: "playa.jpg"
-  },
-  {
-    nombre: "Bungalow Escape La Fortuna",
-    descripcion: "Incluye pase a aguas termales",
-    precioBase: 90,
-    temporada: "media",
-    imagen: "bungalow.jpg"
-  }
-];
-
-function App() {
+const App = () => {
   return (
-    <div className="container">
-      <h1>Gestor de Airbnb</h1>
-      <div className="propiedades">
-        {propiedades.map((propiedad, index) => (
-          <div className="card" key={index}>
-            <Link to={`/propiedad/${index}`}>
-              <img src={propiedad.imagen} alt={propiedad.nombre} />
-            </Link>
-            <h2>{propiedad.nombre}</h2>
-            <p>{propiedad.descripcion}</p>
-          </div>
-        ))}
-      </div>
+    <div>
+      <h1 className="titulo">Gestión de Propiedades</h1>
+      <Routes>
+        <Route path="/" element={<ListadoPropiedad />} />
+        <Route path="/casa-playa-pu" element={<CasaPlayaPU />} />
+        <Route path="/bungalow-f" element={<BungalowF />} />
+      </Routes>
     </div>
   );
-}
+};
 
 export default App;
