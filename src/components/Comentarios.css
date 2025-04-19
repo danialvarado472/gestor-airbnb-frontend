@@ -1,0 +1,50 @@
+.comentarios {
+    margin-top: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.comentarios h3 {
+    margin-bottom: 10px;
+    color: #f8a711;
+}
+
+.comentarios textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    resize: none;
+    margin-bottom: 10px;
+}
+
+.comentarios button {
+    padding: 8px 15px;
+    background-color: #f8a711;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.comentarios button:hover {
+    background-color: #f89500;
+}
+
+.comentarios ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+}
+
+.comentarios li {
+    background-color: #f4f4f4;
+    padding: 8px;
+    margin-bottom: 6px;
+    border-radius: 6px;
+}
