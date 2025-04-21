@@ -4,96 +4,69 @@ body {
   margin: 0;
   padding: 0;
   text-align: center;
+  scroll-behavior: smooth;
+  align-items: center;
 }
 
-.titulo {
-  font-size: 2.5rem;
-  color: #000000;
-  padding: 20px;
-  margin-bottom: 20px;
-  border-radius: 5px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.listado-propiedades {
+/* Contenedor principal */
+.detalle-contenedor {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
-  gap: 20px;
+  align-items: center;
+  min-height: 100vh;
   padding: 20px;
+  box-sizing: border-box;
+  margin-left: 100px;
+  margin-right: 0px;
 }
 
-.tarjeta-propiedad {
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 300px;
-  padding: 15px;
-  transition: transform 0.3s ease-in-out;
-}
-
-.tarjeta-propiedad:hover {
-  transform: scale(1.05);
-}
-
-.imagen-propiedad {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 10px;
-}
-
-.titulo-propiedad {
-  font-size: 1.5rem;
-  color: #000000;
-}
-
-.descripcion-propiedad {
-  font-size: 1rem;
-  color: #000000;
-}
-
-.precio-propiedad {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #ff6600;
-}
-
-.boton-ver-mas {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 10px 15px;
-  background-color: #f8a711;
-  color: white;
-  text-decoration: none;
-  border-radius: 5px;
-  transition: background 0.3s;
-}
-
-.boton-ver-mas:hover {
-
-  background-color: #f89500;
-}
-
+/* Detalles de la propiedad */
 .detalle-propiedad {
-  max-width: 600px;
-  margin: 20px auto;
   background: white;
-  padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px; /* Contenedor más pequeño */
+  padding: 20px;
+  text-align: center;
 }
 
 .titulo-detalle {
   font-size: 2rem;
-  color: #ff6600;
+  color: #000; /* Título en negro */
+  margin-bottom: 15px;
 }
 
 .imagen-detalle {
   width: 100%;
   height: auto;
+  object-fit: cover;
   border-radius: 10px;
-  margin-top: 10px;
+  margin-bottom: 20px;
+  justify-content: center;
+}
+
+p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+/* Título de la página */
+.titulo {
+  font-size: 2.5rem;
+  color: #000;
+  padding: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos del buscador */
+.buscador {
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .input-buscador {
@@ -112,5 +85,119 @@ body {
   box-shadow: 0 0 8px rgba(248, 149, 0, 0.3);
 }
 
+/* Contenedor de las tarjetas de propiedades */
+.listado-propiedades {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-y: auto;
+  max-height: 80vh;
+}
 
+/* Tarjetas de propiedades */
+.tarjeta-propiedad {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  padding: 15px;
+  transition: transform 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
+.tarjeta-propiedad:hover {
+  transform: scale(1.05);
+}
+
+.imagen-propiedad {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.titulo-propiedad {
+  font-size: 1.5rem;
+  color: #000;
+  margin: 10px 0;
+}
+
+.descripcion-propiedad {
+  font-size: 1rem;
+  color: #000;
+}
+
+.precio-propiedad {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #ff6600;
+  margin: 10px 0;
+}
+
+.boton-ver-mas {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 15px;
+  background-color: #f8a711;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+.boton-ver-mas:hover {
+  background-color: #f89500;
+}
+
+/* Mensaje cuando no se encuentran propiedades */
+.mensaje-vacio {
+  font-size: 1.2rem;
+  color: #ff0000;
+  margin-top: 20px;
+}
+
+/* Estilos del formulario de login */
+.login-container {
+  margin-top: 80px;
+}
+
+.formulario-login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.input-login {
+  padding: 10px;
+  width: 80%;
+  max-width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.boton-login {
+  padding: 10px 20px;
+  background-color: #f8a711;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.boton-login:hover {
+  background-color: #f89500;
+}
+
+.error {
+  color: red;
+  font-size: 0.9rem;
+}

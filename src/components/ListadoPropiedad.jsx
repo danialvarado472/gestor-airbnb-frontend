@@ -30,7 +30,9 @@ const ListadoPropiedad = () => {
   );
 
   return (
-      <div>
+      <div id="contenedor-principal">
+        <h1 className="titulo">Listado de Propiedades</h1>
+
         <div className="buscador">
           <input
               type="text"

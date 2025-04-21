@@ -1,21 +1,22 @@
-import { Routes, Route } from "react-router-dom";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import Login from "./components/Login";
 import ListadoPropiedad from "./components/ListadoPropiedad";
-import CasaPlayaPU from "./components/CasaPlayaPU";
-import BungalowF from "./components/BungalowF";
 import DetallePropiedad from "./components/DetallePropiedad";
 import "./App.css";
 
 const App = () => {
-  return (
-    <div>
-      <h1 className="titulo">Gestión de Propiedades</h1>
-        <Routes>
-            <Route path="/" element={<ListadoPropiedad />} />
-            <Route path="/casa-playa-pu" element={<DetallePropiedad />} />
-            <Route path="/bungalow-f" element={<DetallePropiedad />} />
-        </Routes>
-    </div>
-  );
+    return (
+        <Router>
+            <Routes>
+                <Route path="/" element={<Navigate to="/login" />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/listado" element={<ListadoPropiedad />} />
+                <Route path="/casa-playa-pu" element={<DetallePropiedad id={1} />} />
+                <Route path="/bungalow-f" element={<DetallePropiedad id={2} />} />
+            </Routes>
+        </Router>
+    );
 };
 
 export default App;
