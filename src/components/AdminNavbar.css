@@ -1,0 +1,48 @@
+.admin-navbar-principal {
+    background-color: #ffb73c;
+    color: white;
+    padding: 1rem 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.admin-navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.admin-navbar-logo-link {
+    text-decoration: none;
+}
+
+.admin-navbar-logo {
+    height: 30px;
+}
+
+.admin-navbar-lista {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.admin-navbar-item {
+    margin: 0;
+}
+
+.admin-navbar-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.admin-navbar-link:hover {
+    color: #b8580a;
+}

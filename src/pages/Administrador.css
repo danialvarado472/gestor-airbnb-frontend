@@ -1,19 +1,57 @@
-#admin-container {
-    margin-top: 100px;
-    color: orange;
-    text-align: center;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+.admin-page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    background-color: #f8f9fa;
+    min-height: 100vh;
 }
 
-#admin-titulo {
+.admin-page-titulo {
     font-size: 2.5rem;
+    color: #000000;
+    margin-bottom: 30px;
+}
+
+.admin-welcome-section {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.admin-welcome-titulo {
+    font-size: 2rem;
+    color: #000000;
     margin-bottom: 15px;
 }
 
-#admin-mensaje {
+.admin-welcome-mensaje {
     font-size: 1.1rem;
-    color: #555;
+    color: #ffb73c;
+}
+
+.admin-actions-section {
+    display: flex;
+    gap: 20px;
+}
+
+.admin-action-button {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #ff6f00;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.admin-action-button:hover {
+    background-color: #ffb73c;
 }
