@@ -19,8 +19,9 @@
 .navbar-links a {
     color: orange;
     text-decoration: none;
-    margin-left: 1.5rem;
+    margin-left: 10px;
     font-weight: bold;
+    justify-items: center;
 }
 
 .navbar-links a:hover {

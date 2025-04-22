@@ -1,4 +1,3 @@
-// src/pages/Administrador.jsx
 const Administrador = () => {
     return (
         <div className="admin-container" style={{ marginTop: "100px", color: "orange", textAlign: "center" }}>
