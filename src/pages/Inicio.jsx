@@ -16,7 +16,7 @@ const Inicio = () => {
         } else if (usuario === "usuario" && contrasena === "abcd") {
             navigate("/listado");
         } else {
-            setError("Credenciales incorrectas.");
+            setError("No se encontró el usuario.");
         }
     };
 

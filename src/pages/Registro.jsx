@@ -23,13 +23,13 @@ const Registro = () => {
             setError("");
             navigate("/login");
         } else {
-            setError("Usuario o contraseña no válidos.");
+            setError("Usuario o contraseña inválidos.");
         }
     };
 
     return (
         <div id="registro-container" className="registro-container">
-            <h2 id="registro-titulo" className="registro-titulo">Registro</h2>
+            <h2 id="registro-titulo" className="registro-titulo">Registrate aquí</h2>
             <form id="registro-form" onSubmit={handleRegistro}>
                 <input
                     id="registro-usuario"
