@@ -13,10 +13,27 @@
     text-align: center;
 }
 
+#formulario-reserva-precio-base,
+#formulario-reserva-temporada,
+#formulario-reserva-precio-estimado-noche,
+#formulario-reserva-costo-adulto,
+#formulario-reserva-costo-nino {
+    margin-bottom: 8px;
+    text-align: center;
+    font-size: 0.95rem;
+    color: #555;
+}
+
+#formulario-reserva-precio-estimado-noche span {
+    font-weight: bold;
+    color: #e47911;
+}
+
 #formulario-reserva-form {
     display: flex;
     flex-direction: column;
     gap: 15px;
+    margin-top: 15px;
 }
 
 .formulario-reserva-campo {
@@ -47,6 +64,7 @@
     cursor: pointer;
     font-size: 1rem;
     transition: background-color 0.3s ease;
+    margin-top: 15px;
 }
 
 #formulario-reserva-boton:hover {

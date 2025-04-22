@@ -46,10 +46,10 @@ const DetallePropiedad = () => {
                 <h2 id="detalle-titulo" className="detalle-titulo">{propiedad.nombre}</h2>
                 <img id="detalle-imagen" src={propiedad.imagen} alt={propiedad.nombre} className="detalle-imagen" />
                 <p id="detalle-descripcion" className="detalle-descripcion">{propiedad.descripcion}</p>
-                <p id="detalle-precio" className="detalle-precio">Precio Base: ${propiedad.precioBase} por noche</p>
+                <p id="detalle-precio-base-detalle" className="detalle-precio-base-detalle">Precio Base: ${propiedad.precioBase} por noche</p>
 
                 {/* Formulario de Reserva */}
-                <FormularioReserva propiedadNombre={propiedad.nombre} />
+                <FormularioReserva propiedadNombre={propiedad.nombre} precioBase={propiedad.precioBase} />
 
                 {/* Comentarios */}
                 <div id="comentarios-detalle" className="comentarios">
