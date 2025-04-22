@@ -4,6 +4,7 @@ import playaImg from "../assets/CPPUL.jpg";
 import bungalowImg from "../assets/BELF.jpg";
 import "./DetallePropiedad.css";
 import "./Comentarios.css";
+import FormularioReserva from "../components/FormularioReserva";
 
 const propiedades = {
     "/casa-playa-pu": {
@@ -46,6 +47,9 @@ const DetallePropiedad = () => {
                 <img id="detalle-imagen" src={propiedad.imagen} alt={propiedad.nombre} className="detalle-imagen" />
                 <p id="detalle-descripcion" className="detalle-descripcion">{propiedad.descripcion}</p>
                 <p id="detalle-precio" className="detalle-precio">Precio Base: ${propiedad.precioBase} por noche</p>
+
+                {/* Formulario de Reserva */}
+                <FormularioReserva propiedadNombre={propiedad.nombre} />
 
                 {/* Comentarios */}
                 <div id="comentarios-detalle" className="comentarios">

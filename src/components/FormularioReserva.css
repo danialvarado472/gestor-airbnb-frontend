@@ -1,0 +1,61 @@
+#formulario-reserva-contenedor {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    text-align: left;
+}
+
+#formulario-reserva-titulo {
+    color: #f8a711;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+#formulario-reserva-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.formulario-reserva-campo {
+    display: flex;
+    flex-direction: column;
+}
+
+.formulario-reserva-label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.formulario-reserva-input[type="date"],
+.formulario-reserva-input[type="number"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+#formulario-reserva-boton {
+    padding: 10px 15px;
+    background-color: #f8a711;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+#formulario-reserva-boton:hover {
+    background-color: #f89500;
+}
+
+#formulario-reserva-mensaje {
+    margin-top: 15px;
+    color: green;
+    font-weight: bold;
+    text-align: center;
+}
