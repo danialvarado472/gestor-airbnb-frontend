@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import playaImg from "../assets/CPPUL.jpg";
 import bungalowImg from "../assets/BELF.jpg";
+import "./DetallePropiedad.css";
 import "./Comentarios.css";
 
 const propiedades = {
@@ -35,32 +36,35 @@ const DetallePropiedad = () => {
     };
 
     if (!propiedad) {
-        return <p>Propiedad no encontrada.</p>;
+        return <p id="detalle-no-encontrado" className="detalle-no-encontrado">Propiedad no encontrada.</p>;
     }
 
     return (
-        <div className="detalle-propiedad">
-            <h2 className="titulo-detalle">{propiedad.nombre}</h2>
-            <img src={propiedad.imagen} alt={propiedad.nombre} className="imagen-detalle" />
-            <p>{propiedad.descripcion}</p>
-            <p className="precio-propiedad">Precio Base: ${propiedad.precioBase} por noche</p>
+        <div id="detalle-contenedor" className="detalle-contenedor">
+            <div id="detalle-propiedad" className="detalle-propiedad">
+                <h2 id="detalle-titulo" className="detalle-titulo">{propiedad.nombre}</h2>
+                <img id="detalle-imagen" src={propiedad.imagen} alt={propiedad.nombre} className="detalle-imagen" />
+                <p id="detalle-descripcion" className="detalle-descripcion">{propiedad.descripcion}</p>
+                <p id="detalle-precio" className="detalle-precio">Precio Base: ${propiedad.precioBase} por noche</p>
 
-            {/* Comentarios */}
-            <div className="comentarios">
-                <h3>Comentarios</h3>
-                <form onSubmit={enviarComentario}>
-          <textarea
-              value={comentario}
-              onChange={(e) => setComentario(e.target.value)}
-              placeholder="Escribe tu comentario..."
-          />
-                    <button type="submit">Enviar</button>
-                </form>
-                <ul>
-                    {listaComentarios.map((comentario, index) => (
-                        <li key={index}>{comentario}</li>
-                    ))}
-                </ul>
+                {/* Comentarios */}
+                <div id="comentarios-detalle" className="comentarios">
+                    <h3 id="comentarios-titulo">Comentarios</h3>
+                    <form id="comentarios-form" onSubmit={enviarComentario}>
+                        <textarea
+                            id="comentarios-textarea"
+                            value={comentario}
+                            onChange={(e) => setComentario(e.target.value)}
+                            placeholder="Escribe tu comentario..."
+                        />
+                        <button id="comentarios-boton-enviar" type="submit">Enviar</button>
+                    </form>
+                    <ul id="comentarios-lista">
+                        {listaComentarios.map((comentario, index) => (
+                            <li id={`comentario-${index}`} key={index}>{comentario}</li>
+                        ))}
+                    </ul>
+                </div>
             </div>
         </div>
     );

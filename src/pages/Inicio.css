@@ -1,4 +1,4 @@
-#registro-container {
+#inicio-container {
     margin-top: 100px;
     max-width: 400px;
     margin-left: auto;
@@ -11,20 +11,20 @@
     text-align: center;
 }
 
-#registro-titulo {
+#inicio-titulo {
     text-align: center;
     color: orange;
 }
 
-#registro-form {
+#inicio-form {
     display: flex;
     flex-direction: column;
     gap: 15px;
     margin-top: 20px;
 }
 
-#registro-usuario,
-#registro-contrasena {
+#inicio-usuario,
+#inicio-contrasena {
     padding: 10px;
     border: 1px solid orange;
     border-radius: 5px;
@@ -32,7 +32,7 @@
     font-size: 1rem;
 }
 
-#registro-boton {
+#inicio-boton {
     padding: 10px;
     background-color: orange;
     border: none;
@@ -43,11 +43,11 @@
     transition: background-color 0.3s ease;
 }
 
-#registro-boton:hover {
+#inicio-boton:hover {
     background-color: #f89500;
 }
 
-#registro-error {
+#inicio-error {
     margin-top: 15px;
     color: red;
     text-align: center;

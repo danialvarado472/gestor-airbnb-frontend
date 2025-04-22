@@ -1,0 +1,86 @@
+#listado-contenedor-principal {
+    text-align: center;
+    padding: 20px;
+}
+
+#listado-titulo {
+    font-size: 2.5rem;
+    color: #000;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+#listado-propiedades {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-y: auto;
+    max-height: 80vh;
+}
+
+.tarjeta-propiedad {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    padding: 15px;
+    transition: transform 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tarjeta-propiedad:hover {
+    transform: scale(1.05);
+}
+
+.imagen-propiedad {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.titulo-propiedad {
+    font-size: 1.5rem;
+    color: #000;
+    margin: 10px 0;
+}
+
+.descripcion-propiedad {
+    font-size: 1rem;
+    color: #000;
+    text-align: left;
+}
+
+.precio-propiedad {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #ff6600;
+    margin: 10px 0;
+}
+
+.boton-ver-mas {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 15px;
+    background-color: #f8a711;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.boton-ver-mas:hover {
+    background-color: #f89500;
+}
+
+#listado-mensaje-vacio {
+    font-size: 1.2rem;
+    color: #ff0000;
+    margin-top: 20px;
+}

@@ -28,10 +28,11 @@ const Registro = () => {
     };
 
     return (
-        <div className="registro-container">
-            <h2>Registro</h2>
-            <form onSubmit={handleRegistro}>
+        <div id="registro-container" className="registro-container">
+            <h2 id="registro-titulo" className="registro-titulo">Registro</h2>
+            <form id="registro-form" onSubmit={handleRegistro}>
                 <input
+                    id="registro-usuario"
                     type="text"
                     placeholder="Usuario"
                     value={usuario}
@@ -39,14 +40,15 @@ const Registro = () => {
                     required
                 />
                 <input
+                    id="registro-contrasena"
                     type="password"
                     placeholder="Contraseña"
                     value={contrasena}
                     onChange={(e) => setContrasena(e.target.value)}
                     required
                 />
-                <button type="submit">Registrarse</button>
-                {error && <p className="error">{error}</p>}
+                <button id="registro-boton" type="submit">Registrarse</button>
+                {error && <p id="registro-error" className="registro-error">{error}</p>}
             </form>
         </div>
     );

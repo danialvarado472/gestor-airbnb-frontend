@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./Registro.css";
+import "./Inicio.css";
 
 const Inicio = () => {
     const [usuario, setUsuario] = useState("");
@@ -21,10 +21,11 @@ const Inicio = () => {
     };
 
     return (
-        <div className="registro-container">
-            <h2>Iniciar Sesión</h2>
-            <form onSubmit={handleLogin}>
+        <div id="inicio-container" className="inicio-container">
+            <h2 id="inicio-titulo" className="inicio-titulo">Iniciar Sesión</h2>
+            <form id="inicio-form" onSubmit={handleLogin}>
                 <input
+                    id="inicio-usuario"
                     type="text"
                     placeholder="Usuario"
                     value={usuario}
@@ -32,14 +33,15 @@ const Inicio = () => {
                     required
                 />
                 <input
+                    id="inicio-contrasena"
                     type="password"
                     placeholder="Contraseña"
                     value={contrasena}
                     onChange={(e) => setContrasena(e.target.value)}
                     required
                 />
-                <button type="submit">Ingresar</button>
-                {error && <p className="error">{error}</p>}
+                <button id="inicio-boton" type="submit">Ingresar</button>
+                {error && <p id="inicio-error" className="inicio-error">{error}</p>}
             </form>
         </div>
     );

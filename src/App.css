@@ -8,7 +8,7 @@ body {
   align-items: center;
 }
 
-/* Contenedor principal */
+/* Contenedor principal para las páginas de detalle */
 .detalle-contenedor {
   display: flex;
   justify-content: center;
@@ -16,27 +16,29 @@ body {
   min-height: 100vh;
   padding: 20px;
   box-sizing: border-box;
-  margin-left: 100px;
-  margin-right: 0px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* Detalles de la propiedad */
+/* Estilos para el contenedor de detalles de propiedad */
 .detalle-propiedad {
   background: white;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 500px; /* Contenedor más pequeño */
+  max-width: 500px;
   padding: 20px;
   text-align: center;
 }
 
+/* Título para las páginas de detalle */
 .titulo-detalle {
   font-size: 2rem;
-  color: #000; /* Título en negro */
+  color: #000;
   margin-bottom: 15px;
 }
 
+/* Estilos para las imágenes de detalle */
 .imagen-detalle {
   width: 100%;
   height: auto;
@@ -46,13 +48,15 @@ body {
   justify-content: center;
 }
 
+/* Estilos para los párrafos de texto */
 p {
   font-size: 1rem;
   color: #555;
   margin-bottom: 10px;
+  text-align: left;
 }
 
-/* Título de la página */
+/* Título principal de las listas o páginas principales */
 .titulo {
   font-size: 2.5rem;
   color: #000;
@@ -61,14 +65,18 @@ p {
   margin-bottom: 20px;
   border-radius: 5px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  text-align: center; /* Centrar el título principal */
 }
 
-/* Estilos del buscador */
+/* Estilos generales de contenedor del buscador */
 .buscador {
   margin-top: 20px;
   margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
 }
 
+/* Estilos del input del buscador  */
 .input-buscador {
   padding: 0.75rem 1rem;
   width: 90%;
@@ -85,7 +93,7 @@ p {
   box-shadow: 0 0 8px rgba(248, 149, 0, 0.3);
 }
 
-/* Contenedor de las tarjetas de propiedades */
+/* Contenedor de tarjetas propiedades en el listado */
 .listado-propiedades {
   display: flex;
   justify-content: center;
@@ -98,7 +106,7 @@ p {
   max-height: 80vh;
 }
 
-/* Tarjetas de propiedades */
+/* Estilos para las tarjetas propiedad */
 .tarjeta-propiedad {
   background: white;
   border-radius: 10px;
@@ -115,6 +123,7 @@ p {
   transform: scale(1.05);
 }
 
+/* Estilos para las imágenes dentro de tarjetas */
 .imagen-propiedad {
   width: 100%;
   height: 200px;
@@ -122,17 +131,22 @@ p {
   border-radius: 10px;
 }
 
+/* Título dentro de tarjetas */
 .titulo-propiedad {
   font-size: 1.5rem;
   color: #000;
   margin: 10px 0;
+  text-align: center;
 }
 
+/* Descripción dentro de tarjetas */
 .descripcion-propiedad {
   font-size: 1rem;
   color: #000;
+  text-align: left;
 }
 
+/* Precio dentro de tarjetas */
 .precio-propiedad {
   font-size: 1.2rem;
   font-weight: bold;
@@ -140,6 +154,7 @@ p {
   margin: 10px 0;
 }
 
+/* "Ver más"  */
 .boton-ver-mas {
   display: inline-block;
   margin-top: 10px;
@@ -162,18 +177,29 @@ p {
   margin-top: 20px;
 }
 
-/* Estilos del formulario de login */
+/* Estilos generales del contenedor del formulario de login  */
 .login-container {
   margin-top: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+/* Estilos generales del formulario de login */
 .formulario-login {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 15px;
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  max-width: 400px;
 }
 
+/* Estilos generales de los inputs de login */
 .input-login {
   padding: 10px;
   width: 80%;
@@ -183,6 +209,7 @@ p {
   font-size: 1rem;
 }
 
+/* Estilos generales del botón de login */
 .boton-login {
   padding: 10px 20px;
   background-color: #f8a711;
@@ -191,13 +218,16 @@ p {
   color: white;
   font-size: 1rem;
   cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 .boton-login:hover {
   background-color: #f89500;
 }
 
+/* Estilos generales para mensajes de error */
 .error {
   color: red;
   font-size: 0.9rem;
+  margin-top: 10px;
 }
