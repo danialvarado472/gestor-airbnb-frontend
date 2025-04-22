@@ -1,0 +1,61 @@
+.agregar-propiedad-form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #000000;
+}
+
+.form-input,
+.form-textarea,
+.form-input-file {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.form-textarea {
+    resize: vertical;
+}
+
+.form-input-file {
+    padding-top: 5px;
+}
+
+.form-button {
+    background-color: #ff6f00;
+    color: white;
+    border: none;
+    border-color: #b8580a;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.form-button:hover {
+    background-color: #ffb73c;
+}
+
+.form-message {
+    margin-top: 15px;
+    color: green;
+    font-weight: bold;
+    text-align: center;
+}

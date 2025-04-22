@@ -1,0 +1,43 @@
+.propiedades-eliminar-lista {
+    list-style: none;
+    padding: 0;
+    width: 80%;
+    max-width: 600px;
+}
+
+.eliminar-propiedad-item {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.eliminar-propiedad-nombre {
+    font-weight: bold;
+    color: #000000;
+}
+
+.eliminar-propiedad-btn {
+    background-color: #ff6f00;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.eliminar-propiedad-btn:hover {
+    background-color: #ffb73c;
+}
+
+.eliminar-propiedad-mensaje {
+    margin-top: 15px;
+    color: green;
+    font-weight: bold;
+    text-align: center;
+}
