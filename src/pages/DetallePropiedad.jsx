@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import playaImg from "../assets/CPPUL.jpg";
 import bungalowImg from "../assets/BELF.jpg";
-import "../components/Comentarios.css";
+import "./Comentarios.css";
 
 const propiedades = {
     "/casa-playa-pu": {
