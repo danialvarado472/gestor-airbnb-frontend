@@ -1,54 +1,104 @@
-#registro-container {
-    margin-top: 100px;
-    max-width: 400px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 2rem;
-    border: 2px solid rgb(255, 111, 0);
-    border-radius: 10px;
-    background-color: rgb(255, 184, 3);
-    color: rgb(255, 255, 255);
-    text-align: center;
+#registro-contenedor-principal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding-top: 20px;
+    background: linear-gradient(45deg, #ff6f00, rgba(255, 204, 103, 0.8), #ffb803);
+    background-size: 300% 100%;
+    animation: moverDegradadoRegistro 10s ease infinite;
 }
 
 #registro-titulo {
+    color: #fff;
+    font-size: 2.5rem;
+    margin-top: 3px;
+    text-shadow: 2px 2px 4px rgb(255, 184, 3);
+    margin-bottom: 30px;
+}
+
+#registro-formulario {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgb(0, 0, 0);
+    width: 80%;
+    max-width: 400px;
     text-align: center;
-    color: #ffffff;
+    margin-bottom: 150px;
 }
 
-#registro-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin-top: 20px;
-}
-
-#registro-usuario,
-#registro-contrasena {
-    padding: 10px;
-    border: 1px solid rgb(255, 183, 60);
-    border-radius: 5px;
+#registro-formulario label {
+    display: block;
+    margin-bottom: 10px;
     color: #000000;
+    font-weight: bold;
+}
+
+.registro-input-container {
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.registro-input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
     font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.registro-toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    user-select: none;
 }
 
 #registro-boton {
-    padding: 10px;
-    background-color: #ff6f00;
+    background-color: #ffb803;
+    color: white;
     border: none;
     border-radius: 5px;
-    font-weight: bold;
-    color: #ffffff;
+    padding: 10px 20px;
+    font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    margin-top: 20px;
 }
 
 #registro-boton:hover {
-    background-color: #f89500;
+    background-color: #ff6f00;
 }
 
 #registro-error {
-    margin-top: 15px;
-    color: red;
+    color: #ff0303;
+    margin-top: 10px;
     text-align: center;
+}
+
+#registro-login-link {
+    margin-top: 20px;
+    text-align: center;
+    color: #000000;
+}
+
+#registro-login-link a {
+    color: #ff6f00;
+    text-decoration: none;
+}
+
+#registro-login-link a:hover {
+    text-decoration: underline;
+}
+
+@keyframes moverDegradadoRegistro {
+    0% { background-position: 0 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0 50%; }
 }

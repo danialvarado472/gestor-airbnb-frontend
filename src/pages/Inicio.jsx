@@ -1,47 +1,69 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import "./Inicio.css";
+import React, { useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
+import './Inicio.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 const Inicio = () => {
-    const [usuario, setUsuario] = useState("");
-    const [contrasena, setContrasena] = useState("");
-    const [error, setError] = useState("");
+    const [usuario, setUsuario] = useState('');
+    const [contrasena, setContrasena] = useState('');
+    const [error, setError] = useState('');
+    const [mostrarContrasena, setMostrarContrasena] = useState(false);
     const navigate = useNavigate();
 
-    const handleLogin = (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
-
-        if (usuario === "admin" && contrasena === "1234") {
-            navigate("/admin");
-        } else if (usuario === "usuario" && contrasena === "abcd") {
-            navigate("/listado");
+        if (!usuario || !contrasena) {
+            setError('Por favor, introduce usuario y contraseña.');
+            return;
+        }
+        if ((usuario === 'admin' && contrasena === '1234') || (usuario === 'usuario' && contrasena === 'abcd')) {
+            navigate('/admin');
         } else {
-            setError("No se encontró el usuario.");
+            setError('Credenciales incorrectas');
+            setTimeout(() => setError(''), 3000);
         }
     };
 
+    const toggleMostrarContrasena = () => {
+        setMostrarContrasena(!mostrarContrasena);
+    };
+
     return (
-        <div id="inicio-container" className="inicio-container">
-            <h2 id="inicio-titulo" className="inicio-titulo">Iniciar Sesión</h2>
-            <form id="inicio-form" onSubmit={handleLogin}>
+        <div id="inicio-contenedor-principal">
+            <h1 id="inicio-titulo">Iniciar Sesión</h1>
+            <form id="inicio-formulario" onSubmit={handleSubmit}>
+                <label htmlFor="usuario">Usuario:</label>
                 <input
-                    id="inicio-usuario"
                     type="text"
-                    placeholder="Usuario"
+                    id="usuario"
+                    className="inicio-input"
                     value={usuario}
                     onChange={(e) => setUsuario(e.target.value)}
                     required
                 />
-                <input
-                    id="inicio-contrasena"
-                    type="password"
-                    placeholder="Contraseña"
-                    value={contrasena}
-                    onChange={(e) => setContrasena(e.target.value)}
-                    required
-                />
-                <button id="inicio-boton" type="submit">Ingresar</button>
-                {error && <p id="inicio-error" className="inicio-error">{error}</p>}
+                <label htmlFor="contrasena">Contraseña:</label>
+                <div className="inicio-input-container">
+                    <input
+                        type={mostrarContrasena ? 'text' : 'password'}
+                        id="contrasena"
+                        className="inicio-input"
+                        value={contrasena}
+                        onChange={(e) => setContrasena(e.target.value)}
+                        required
+                    />
+                    <span
+                        className="inicio-toggle-password"
+                        onClick={toggleMostrarContrasena}
+                    >
+                        <FontAwesomeIcon icon={mostrarContrasena ? faEyeSlash : faEye} />
+                    </span>
+                </div>
+                <button type="submit">Iniciar Sesión</button>
+                {error && <p id="inicio-mensaje-error">{error}</p>}
+                <p id="inicio-no-cuenta">
+                    ¿No tienes cuenta? <Link to="/">Regístrate aquí</Link>
+                </p>
             </form>
         </div>
     );
