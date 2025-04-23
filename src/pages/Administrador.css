@@ -1,20 +1,25 @@
-.admin-page-container {
+#admin-contenedor-principal {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 30px;
-    background-color: #f8f9fa;
+    justify-content: flex-start;
     min-height: 100vh;
+    padding-top: 20px;
+    background: linear-gradient(45deg, #ff6f00, rgb(74, 37, 0), #ffc710);
+    background-size: 300% 100%;
+    animation: moverDegradadoAdmin 15s ease infinite;
 }
 
-.admin-page-titulo {
+#admin-page-titulo {
     font-size: 2.5rem;
-    color: #000000;
+    color: #fff;
+    margin-top: 20px;
     margin-bottom: 30px;
+    text-shadow: 2px 2px 4px rgb(255, 184, 3);
 }
 
-.admin-welcome-section {
-    background-color: #ffffff;
+#admin-welcome-section {
+    background-color: rgba(255, 255, 255, 0.8);
     padding: 40px;
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -22,18 +27,18 @@
     margin-bottom: 30px;
 }
 
-.admin-welcome-titulo {
+#admin-welcome-titulo {
     font-size: 2rem;
-    color: #000000;
+    color: #333;
     margin-bottom: 15px;
 }
 
-.admin-welcome-mensaje {
+#admin-welcome-mensaje {
     font-size: 1.1rem;
-    color: #ffb73c;
+    color: #ff6f00;
 }
 
-.admin-actions-section {
+#admin-actions-section {
     display: flex;
     gap: 20px;
 }
@@ -41,7 +46,7 @@
 .admin-action-button {
     display: inline-block;
     padding: 15px 30px;
-    background-color: #ff6f00;
+    background-color: #ffb803;
     color: white;
     text-decoration: none;
     border-radius: 8px;
@@ -53,5 +58,11 @@
 }
 
 .admin-action-button:hover {
-    background-color: #ffb73c;
+    background-color: #ff6f00;
+}
+
+@keyframes moverDegradadoAdmin {
+    0% { background-position: 0 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0 50%; }
 }

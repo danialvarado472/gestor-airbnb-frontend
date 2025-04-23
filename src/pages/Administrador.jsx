@@ -4,7 +4,7 @@ import './Administrador.css';
 
 const Administrador = () => {
     return (
-        <div id="admin-page-container" className="admin-page-container">
+        <div id="admin-contenedor-principal" className="admin-page-container">
             <h1 id="admin-page-titulo" className="admin-page-titulo">Panel de Administración</h1>
             <div id="admin-welcome-section" className="admin-welcome-section">
                 <h2 id="admin-welcome-titulo" className="admin-welcome-titulo">Bienvenido, Administrador</h2>
