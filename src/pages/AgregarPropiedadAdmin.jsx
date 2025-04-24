@@ -8,21 +8,47 @@ const AgregarPropiedadAdmin = () => {
     const [precio, setPrecio] = useState('');
     const [foto, setFoto] = useState(null);
     const [mensaje, setMensaje] = useState('');
+    const [error, setError] = useState(null);
 
     const handleFotoChange = (e) => {
         setFoto(e.target.files[0]);
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        const nombreFoto = foto ? foto.name : 'Ninguna foto seleccionada';
-        setMensaje(`Propiedad "${nombre}" agregada exitosamente (simulación). Foto seleccionada: ${nombreFoto}`);
-        // llamar a la API para agregar la propiedad
-        setNombre('');
-        setDescripcion('');
-        setPrecio('');
-        setFoto(null);
-        setTimeout(() => setMensaje(''), 3000);
+
+        try {
+            const response = await fetch('http://localhost:3001/api/propiedades', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    nombre: nombre,
+                    descripcion: descripcion,
+                    precio: precio, // Asegúrate de enviar 'precio' y no 'precioNoche' aquí
+                    foto: foto ? foto.name : null,
+                }),
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(`Error al agregar la propiedad: ${response.status} - ${errorData.message || 'Detalles no disponibles'}`);
+            }
+
+            const data = await response.json();
+            setMensaje(data.mensaje);
+            setNombre('');
+            setDescripcion('');
+            setPrecio('');
+            setFoto(null);
+            setError(null);
+            setTimeout(() => setMensaje(''), 3000);
+        } catch (error) {
+            console.error('Error al agregar la propiedad:', error);
+            setError('Error al agregar la propiedad.');
+            setMensaje('');
+        }
     };
 
     return (
@@ -69,11 +95,12 @@ const AgregarPropiedadAdmin = () => {
                         id="foto"
                         className="form-input-file"
                         onChange={handleFotoChange}
-                        accept="image/*" // Opcional: aceptar solo archivos de imagen
+                        accept="image/*"
                     />
                 </div>
                 <button type="submit" id="agregar-propiedad-btn" className="form-button">Agregar Propiedad</button>
-                {mensaje && <p id="agregar-propiedad-mensaje" className="form-message">{mensaje}</p>}
+                {mensaje && <p className="form-message">{mensaje}</p>}
+                {error && <p className="form-error">{error}</p>}
             </form>
         </div>
     );

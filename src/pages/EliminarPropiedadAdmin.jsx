@@ -1,31 +1,65 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './AdminPages.css';
 import './EliminarPropiedadAdmin.css';
 
-const propiedadesSimuladas = [
-    { id: 1, nombre: "Casa de Playa en Punta Uva" },
-    { id: 2, nombre: "Bungalow en La Fortuna" },
-    { id: 3, nombre: "Apartamento en Tamarindo" },
-];
-
 const EliminarPropiedadAdmin = () => {
+    const [propiedades, setPropiedades] = useState([]);
     const [mensaje, setMensaje] = useState('');
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        fetch('http://localhost:3001/api/propiedades')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => setPropiedades(data))
+            .catch(error => {
+                console.error('Error al obtener las propiedades:', error);
+                setError('Error al cargar las propiedades.');
+            });
+    }, []);
 
     const handleEliminar = (id) => {
-        setMensaje(`Propiedad con ID ${id} eliminada exitosamente.`);
-        // llamar a la API para eliminar la propiedad.
-        setTimeout(() => setMensaje(''), 3000);
+        fetch(`http://localhost:3001/api/propiedades/${id}`, {
+            method: 'DELETE',
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                setMensaje(data.mensaje);
+                setPropiedades(propiedades.filter(propiedad => propiedad.id !== id));
+                setError(null);
+                setTimeout(() => setMensaje(''), 3000);
+            })
+            .catch(error => {
+                console.error('Error al eliminar la propiedad:', error);
+                setError('Error al eliminar la propiedad.');
+                setMensaje('');
+            });
     };
+
+    if (error) {
+        return <div id="eliminar-propiedad-admin-container" className="admin-page-container">
+            <h1 id="eliminar-propiedad-admin-titulo" className="admin-page-titulo">Eliminar Propiedad</h1>
+            <p className="error-message">{error}</p>
+        </div>;
+    }
 
     return (
         <div id="eliminar-propiedad-admin-container" className="admin-page-container">
             <h1 id="eliminar-propiedad-admin-titulo" className="admin-page-titulo">Eliminar Propiedad</h1>
             <ul id="propiedades-eliminar-lista" className="propiedades-eliminar-lista">
-                {propiedadesSimuladas.map(propiedad => (
+                {propiedades.map(propiedad => (
                     <li id={`eliminar-propiedad-item-${propiedad.id}`} key={propiedad.id} className="eliminar-propiedad-item">
-                        <span id={`eliminar-propiedad-nombre-${propiedad.id}`} className="eliminar-propiedad-nombre">{propiedad.nombre}</span>
+                        <span className="eliminar-propiedad-nombre">{propiedad.nombre}</span>
                         <button
-                            id={`eliminar-propiedad-btn-${propiedad.id}`}
                             className="eliminar-propiedad-btn"
                             onClick={() => handleEliminar(propiedad.id)}
                         >
@@ -34,7 +68,8 @@ const EliminarPropiedadAdmin = () => {
                     </li>
                 ))}
             </ul>
-            {mensaje && <p id="eliminar-propiedad-mensaje" className="eliminar-propiedad-mensaje">{mensaje}</p>}
+            {mensaje && <p className="eliminar-propiedad-mensaje">{mensaje}</p>}
+            {error && <p className="error-message">{error}</p>}
         </div>
     );
 };

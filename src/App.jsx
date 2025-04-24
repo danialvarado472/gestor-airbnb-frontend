@@ -10,6 +10,7 @@ import AdminNavbar from "./components/AdminNavbar";
 import VerPropiedadesAdmin from "./pages/VerPropiedadesAdmin";
 import AgregarPropiedadAdmin from "./pages/AgregarPropiedadAdmin";
 import EliminarPropiedadAdmin from "./pages/EliminarPropiedadAdmin";
+import UserPages from './pages/UserPages';
 import "./App.css";
 
 const AppContent = () => {
@@ -20,6 +21,7 @@ const AppContent = () => {
         <>
             {isAdminRoute ? <AdminNavbar /> : <Navbar />}
             <Routes>
+                <Route path="/usuario" element={<UserPages />} />
                 <Route path="/" element={<Registro />} />
                 <Route path="/login" element={<Inicio />} />
                 <Route path="/admin" element={<Administrador />} />

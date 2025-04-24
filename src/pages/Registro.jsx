@@ -19,14 +19,16 @@ const Registro = () => {
             return;
         }
 
+
         if (
-            (usuario === "admin" && contrasena === "admin") ||
+            (usuario === "admin" && contrasena === "1234") ||
             (usuario === "usuario" && contrasena === "abcd")
         ) {
             setError("");
+
             navigate("/login");
         } else {
-            setError("Usuario o contraseña inválidos.");
+            setError("Credenciales inválidas para el registro.");
         }
     };
 
@@ -35,10 +37,10 @@ const Registro = () => {
     };
 
     return (
-        <div id="registro-contenedor-principal" className="registro-contenedor"> {/* ID único y clase */}
-            <h2 id="registro-titulo" className="registro-titulo">Registrate aquí</h2> {/* ID único y clase */}
-            <form id="registro-formulario" onSubmit={handleRegistro}> {/* ID único */}
-                <label htmlFor="registro-usuario">Usuario:</label> {/* ID único */}
+        <div id="registro-contenedor-principal" className="registro-contenedor">
+            <h2 id="registro-titulo" className="registro-titulo">Registrate aquí</h2>
+            <form id="registro-formulario" onSubmit={handleRegistro}>
+                <label htmlFor="registro-usuario">Usuario:</label>
                 <input
                     id="registro-usuario"
                     className="registro-input"
@@ -48,8 +50,8 @@ const Registro = () => {
                     onChange={(e) => setUsuario(e.target.value)}
                     required
                 />
-                <label htmlFor="registro-contrasena">Contraseña:</label> {/* ID único */}
-                <div className="registro-input-container"> {/* Clase reutilizada */}
+                <label htmlFor="registro-contrasena">Contraseña:</label>
+                <div className="registro-input-container">
                     <input
                         id="registro-contrasena"
                         className="registro-input"
@@ -66,9 +68,9 @@ const Registro = () => {
                         <FontAwesomeIcon icon={mostrarContrasena ? faEyeSlash : faEye} />
                     </span>
                 </div>
-                <button id="registro-boton" type="submit">Registrarse</button> {/* ID único */}
-                {error && <p id="registro-error" className="registro-error">{error}</p>} {/* ID único y clase */}
-                <p id="registro-login-link"> {/* ID único */}
+                <button id="registro-boton" type="submit">Registrarse</button>
+                {error && <p id="registro-error" className="registro-error">{error}</p>}
+                <p id="registro-login-link">
                     ¿Ya tienes cuenta? <Link to="/login">Inicia sesión</Link>
                 </p>
             </form>
