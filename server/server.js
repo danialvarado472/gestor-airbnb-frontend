@@ -50,7 +50,7 @@ app.post('/api/reservas', (req, res) => {
     };
     reservas.push(nuevaReserva);
     console.log('Nueva reserva guardada:', nuevaReserva);
-    res.status(201).json({ mensaje: 'Reserva realizada con éxito', reserva: nuevaReserva }); // Usar 201 para creación exitosa
+    res.status(201).json({ mensaje: 'Reserva realizada con éxito', reserva: nuevaReserva });
 });
 
 app.get('/api/reservas', (req, res) => {

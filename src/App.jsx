@@ -12,6 +12,8 @@ import AgregarPropiedadAdmin from "./pages/AgregarPropiedadAdmin";
 import EliminarPropiedadAdmin from "./pages/EliminarPropiedadAdmin";
 import VerReservasAdmin from './pages/VerReservasAdmin';
 import UserPages from './pages/UserPages';
+import PaginaInicioUsuario from './pages/PaginaInicioUsuario';
+import ListaReservas from './pages/ListaReservas.jsx';
 import "./App.css";
 
 const AppContent = () => {
@@ -22,6 +24,8 @@ const AppContent = () => {
         <>
             {isAdminRoute ? <AdminNavbar /> : <Navbar />}
             <Routes>
+                <Route path="/inicio-usuario" element={<PaginaInicioUsuario />} />
+                <Route path="/lista-reservas" element={<ListaReservas />} />
                 <Route path="/usuario" element={<UserPages />} />
                 <Route path="/" element={<Registro />} />
                 <Route path="/login" element={<Inicio />} />
@@ -34,6 +38,7 @@ const AppContent = () => {
                 <Route path="/admin/agregar-propiedad" element={<AgregarPropiedadAdmin />} />
                 <Route path="/admin/eliminar-propiedad" element={<EliminarPropiedadAdmin />} />
                 <Route path="/admin/reservas" element={<VerReservasAdmin />} />
+                <Route path="/reservas/cancelar" element={<ListaReservas />} />
             </Routes>
         </>
     );

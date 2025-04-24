@@ -12,7 +12,7 @@
 #casa-playa-pu-detalle {
     background: white;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgb(0, 0, 0);
     width: 100%;
     max-width: 500px;
     padding: 20px;
@@ -35,7 +35,7 @@
 
 #casa-playa-pu-descripcion {
     font-size: 1rem;
-    color: #555;
+    color: #000000;
     margin-bottom: 10px;
     text-align: left;
 }
@@ -43,5 +43,5 @@
 #casa-playa-pu-precio {
     font-size: 1.2rem;
     font-weight: bold;
-    color: #007bff;
+    color: #ff6f00;
 }

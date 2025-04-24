@@ -20,7 +20,7 @@ const Inicio = () => {
         if (usuario === 'admin' && contrasena === '1234') {
             navigate('/admin');
         } else if (usuario === 'usuario' && contrasena === 'abcd') {
-            navigate('/usuario');
+            navigate('/inicio-usuario');
         } else {
             setError('Credenciales incorrectas');
             setTimeout(() => setError(''), 3000);

@@ -15,7 +15,7 @@ const VerPropiedadesAdmin = () => {
                 return response.json();
             })
             .then(data => {
-                console.log("Datos recibidos de la API:", data); // Para inspeccionar los datos
+                console.log("Datos recibidos de la API:", data);
                 setPropiedades(data);
             })
             .catch(error => {

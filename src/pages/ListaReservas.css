@@ -1,0 +1,81 @@
+#lista-reservas-contenedor-principal {
+    padding: 20px;
+    background-color: #f8f9fa;
+    max-height: 400px;
+    min-height: 300px;
+}
+
+#lista-reservas-titulo {
+    color: #000000;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#lista-reservas-mensaje-cancelado {
+    color: #155724;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+#lista-reservas-contenedor-listado {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.reserva-contenedor {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgb(0, 0, 0);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.reserva-info {
+    margin-bottom: 15px;
+}
+
+.reserva-info p {
+    margin: 5px 0;
+    color: #000000;
+    font-size: 0.9rem;
+}
+
+.reserva-info strong {
+    font-weight: bold;
+    color: #000000;
+}
+
+#boton-cancelar-usuario-* {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+    align-self: flex-end;
+}
+
+#boton-cancelar-usuario-*:hover {
+    background-color: #c82333;
+}
+
+#lista-reservas-vacia {
+    padding: 20px;
+    color: #000000;
+    text-align: center;
+}
+
+#lista-reservas-error-cargar {
+    color: #dc3545;
+    text-align: center;
+    margin-top: 20px;
+}

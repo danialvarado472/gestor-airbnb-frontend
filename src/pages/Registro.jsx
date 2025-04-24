@@ -71,7 +71,7 @@ const Registro = () => {
                 <button id="registro-boton" type="submit">Registrarse</button>
                 {error && <p id="registro-error" className="registro-error">{error}</p>}
                 <p id="registro-login-link">
-                    ¿Ya tienes cuenta? <Link to="/login">Inicia sesión</Link>
+                    ¿Ya tienes una cuenta? <Link to="/login">Inicia sesión</Link>
                 </p>
             </form>
         </div>

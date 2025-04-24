@@ -26,7 +26,7 @@ const AgregarPropiedadAdmin = () => {
                 body: JSON.stringify({
                     nombre: nombre,
                     descripcion: descripcion,
-                    precio: precio, // Asegúrate de enviar 'precio' y no 'precioNoche' aquí
+                    precio: precio,
                     foto: foto ? foto.name : null,
                 }),
             });

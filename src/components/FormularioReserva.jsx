@@ -8,37 +8,36 @@ const FormularioReserva = ({ propiedadNombre, precioBase }) => {
     const [adultos, setAdultos] = useState(1);
     const [ninos, setNinos] = useState(0);
     const [mensajeReserva, setMensajeReserva] = useState('');
-    const [temporada, setTemporada] = useState('baja'); // Estado inicial de la temporada
+    const [temporada, setTemporada] = useState('baja');
     const [precioBasePorNocheConTemporada, setPrecioBasePorNocheConTemporada] = useState(precioBase);
     const [precioEstimadoPorNoche, setPrecioEstimadoPorNoche] = useState(precioBase);
     const costoAdultoAdicional = 15; // Costo adicional por adulto por noche
     const costoNinoAdicional = 10;   // Costo adicional por niño por noche
 
     useEffect(() => {
-        // Simulación de la lógica de temporada basada en las fechas seleccionadas
         if (fechaInicio && fechaFin) {
             const inicio = new Date(fechaInicio);
             const fin = new Date(fechaFin);
             const mesInicio = inicio.getMonth();
             const mesFin = fin.getMonth();
 
-            // Simulación de temporada alta (ejemplo: diciembre, enero, julio)
+            // Simulación de temporada alta  (diciembre, enero, julio)
             if (mesInicio === 11 || mesInicio === 0 || mesInicio === 6 || mesFin === 11 || mesFin === 0 || mesFin === 6) {
                 setTemporada('alta');
             }
-            // Simulación de temporada media (ejemplo: marzo, abril, agosto, septiembre)
+            // Simulación de temporada media (marzo, abril, agosto, septiembre)
             else if (mesInicio === 2 || mesInicio === 3 || mesInicio === 7 || mesInicio === 8 || mesFin === 2 || mesFin === 3 || mesFin === 7 || mesFin === 8) {
                 setTemporada('media');
             } else {
                 setTemporada('baja');
             }
         } else {
-            setTemporada('baja'); // Temporada baja por defecto si no hay fechas seleccionadas
+            setTemporada('baja');
         }
     }, [fechaInicio, fechaFin]);
 
     useEffect(() => {
-        // Actualizar el precio base por noche según la temporada
+
         const ajusteTemporada =
             temporada === 'alta' ? precioBase * 0.2 :
                 temporada === 'media' ? precioBase * 0.1 :
@@ -47,7 +46,7 @@ const FormularioReserva = ({ propiedadNombre, precioBase }) => {
     }, [temporada, precioBase]);
 
     useEffect(() => {
-        // Actualizar el precio estimado por noche incluyendo el costo adicional por personas
+
         const costoAdicionalPersonasPorNoche = (adultos > 1 ? (adultos - 1) * costoAdultoAdicional : 0) + (ninos * costoNinoAdicional);
         setPrecioEstimadoPorNoche(precioBasePorNocheConTemporada + costoAdicionalPersonasPorNoche);
     }, [adultos, ninos, precioBasePorNocheConTemporada]);
@@ -75,13 +74,12 @@ const FormularioReserva = ({ propiedadNombre, precioBase }) => {
             const precioTotalEstimado = precioEstimadoPorNoche * noches;
 
             setMensajeReserva(`¡Reserva para "${propiedadNombre}" confirmada desde el ${fechaInicio} hasta el ${fechaFin} para ${adultos} adultos y ${ninos} niños! Precio total estimado: $${precioTotalEstimado.toFixed(2)}`);
-            // En una implementación real, aquí se haría la llamada a la API para guardar la reserva.
-            // Limpiar el formulario después de la reserva simulada
+
             setFechaInicio('');
             setFechaFin('');
             setAdultos(1);
             setNinos(0);
-            setTimeout(() => setMensajeReserva(''), 5000); // Limpiar el mensaje después de 5 segundos
+            setTimeout(() => setMensajeReserva(''), 5000);
         } else {
             setMensajeReserva('Por favor, selecciona las fechas de inicio y fin de tu reserva.');
             setTimeout(() => setMensajeReserva(''), 5000);
@@ -94,7 +92,7 @@ const FormularioReserva = ({ propiedadNombre, precioBase }) => {
         const fechaFinReserva = new Date(fin);
         const diferenciaTiempo = fechaFinReserva.getTime() - fechaInicioReserva.getTime();
         const diferenciaDias = Math.ceil(diferenciaTiempo / (1000 * 3600 * 24));
-        return diferenciaDias > 0 ? diferenciaDias : 1; // Mínimo 1 noche
+        return diferenciaDias > 0 ? diferenciaDias : 1; 
     };
 
     return (

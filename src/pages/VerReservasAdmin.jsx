@@ -44,7 +44,7 @@ function VerReservasAdmin() {
                 setMensajeEliminado('¡Reserva eliminada con éxito!');
                 setTimeout(() => {
                     setMensajeEliminado(null);
-                }, 3000); // El mensaje desaparece después de 3 segundos
+                }, 3000);
                 fetchReservas();
             })
             .catch(error => {
@@ -60,7 +60,7 @@ function VerReservasAdmin() {
     return (
         <div>
             <h2 className="admin-reservas-titulo">Lista de Reservas</h2>
-            {mensajeEliminado && <div className="mensaje-exito">{mensajeEliminado}</div>} {/* Mostrar mensaje si existe */}
+            {mensajeEliminado && <div className="mensaje-exito">{mensajeEliminado}</div>}
             {reservasAdmin.length > 0 ? (
                 <div className="reservas-admin-container">
                     {reservasAdmin.map(reserva => (
