@@ -2,7 +2,7 @@
     background-color: white;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgb(0, 0, 0);
     width: 80%;
     max-width: 600px;
     display: flex;
@@ -43,6 +43,7 @@
     color: white;
     border: none;
     border-color: #b8580a;
+    border-radius: 40px;
     padding: 10px 15px;
     cursor: pointer;
     font-size: 1rem;

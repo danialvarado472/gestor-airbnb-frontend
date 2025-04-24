@@ -1,68 +1,51 @@
-#admin-contenedor-principal {
+#admin-page-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
+    padding: 20px;
+    background-color: #f4f4f4;
     min-height: 100vh;
-    padding-top: 20px;
-    background: linear-gradient(45deg, #ff6f00, rgb(74, 37, 0), #ffc710);
-    background-size: 300% 100%;
-    animation: moverDegradadoAdmin 15s ease infinite;
+    margin-top: 110px;
 }
 
 #admin-page-titulo {
-    font-size: 2.5rem;
-    color: #fff;
-    margin-top: 20px;
-    margin-bottom: 30px;
-    text-shadow: 2px 2px 4px rgb(255, 184, 3);
-}
-
-#admin-welcome-section {
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    text-align: center;
+    font-size: 2.5em;
+    color: #000000;
     margin-bottom: 30px;
 }
 
-#admin-welcome-titulo {
-    font-size: 2rem;
-    color: #333;
-    margin-bottom: 15px;
-}
-
-#admin-welcome-mensaje {
-    font-size: 1.1rem;
-    color: #ff6f00;
-}
-
-#admin-actions-section {
+#admin-actions-container {
     display: flex;
     gap: 20px;
+    width: 80%;
+    max-width: 600px;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .admin-action-button {
     display: inline-block;
-    padding: 15px 30px;
-    background-color: #ffb803;
+    padding: 15px 20px;
+    text-align: center;
     color: white;
-    text-decoration: none;
-    border-radius: 8px;
-    font-size: 1.1rem;
-    transition: background-color 0.3s ease;
+    background-color: #ff6f00;
     border: none;
-    cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease;
+    margin-bottom: 10px;
+    min-width: 150px;
 }
 
 .admin-action-button:hover {
-    background-color: #ff6f00;
+    background-color: #ffb803;
 }
 
-@keyframes moverDegradadoAdmin {
-    0% { background-position: 0 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0 50%; }
+.nuevo-boton-admin {
+    background-color: #ffb803;
+}
+
+.nuevo-boton-admin:hover {
+    background-color: #ff6f00;
 }

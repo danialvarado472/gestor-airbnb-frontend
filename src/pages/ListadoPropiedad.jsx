@@ -1,31 +1,29 @@
-import React, { useState } from "react";
-import playaImg from "../assets/CPPUL.jpg";
-import bungalowImg from "../assets/BELF.jpg";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./ListadoPropiedad.css";
 import "./Buscador.css";
-
-const propiedades = [
-    {
-        id: 1,
-        nombre: "Casa en la Playa, Punta Uva, Limón",
-        descripcion: "A 200mts de la playa",
-        precioBase: 120,
-        imagen: playaImg,
-        ruta: "/casa-playa-pu",
-    },
-    {
-        id: 2,
-        nombre: "Bungalow Escape La Fortuna",
-        descripcion: "Incluye pase a aguas termales",
-        precioBase: 90,
-        imagen: bungalowImg,
-        ruta: "/bungalow-f",
-    },
-];
+import playaImg from "../assets/CPPUL.jpg";
+import bungalowImg from "../assets/BELF.jpg";
 
 const ListadoPropiedad = () => {
+    const [propiedades, setPropiedades] = useState([]);
     const [busqueda, setBusqueda] = useState("");
+    const [, setError] = useState(null);
+
+    useEffect(() => {
+        fetch('http://localhost:3001/api/propiedades')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => setPropiedades(data))
+            .catch(error => {
+                console.error('Error al obtener las propiedades:', error);
+                setError('Error al cargar las propiedades.');
+            });
+    }, []);
 
     const propiedadesFiltradas = propiedades.filter((propiedad) =>
         propiedad.nombre.toLowerCase().includes(busqueda.toLowerCase())
@@ -50,30 +48,29 @@ const ListadoPropiedad = () => {
                 {propiedadesFiltradas.length > 0 ? (
                     propiedadesFiltradas.map((propiedad) => (
                         <div id={`propiedad-tarjeta-${propiedad.id}`} key={propiedad.id} className="tarjeta-propiedad">
-                            <Link to={propiedad.ruta}>
+                            <Link to={propiedad.id === 1 ? "/casa-playa-pu" : propiedad.id === 2 ? "/bungalow-f" : `/propiedad/${propiedad.id}`}>
                                 <img
                                     id={`propiedad-imagen-${propiedad.id}`}
-                                    src={propiedad.imagen}
+                                    src={propiedad.id === 1 ? playaImg : propiedad.id === 2 ? bungalowImg : `/images/propiedad-${propiedad.id}.jpg`}
                                     alt={propiedad.nombre}
                                     className="imagen-propiedad"
                                 />
                             </Link>
-                            <h2 id={`propiedad-titulo-${propiedad.id}`} className="titulo-propiedad">{propiedad.nombre}</h2>
-                            <p id={`propiedad-descripcion-${propiedad.id}`} className="descripcion-propiedad">{propiedad.descripcion}</p>
-                            <p id={`propiedad-precio-${propiedad.id}`} className="precio-propiedad">
-                                Precio Base: ${propiedad.precioBase} por noche
+                            <h2 className="titulo-propiedad">{propiedad.nombre}</h2>
+                            <p className="descripcion-propiedad">{propiedad.descripcion}</p>
+                            <p className="precio-propiedad">
+                                Precio Base: ${propiedad.precioNoche} por noche
                             </p>
                             <Link
-                                id={`propiedad-boton-ver-mas-${propiedad.id}`}
-                                to={propiedad.ruta}
                                 className="boton-ver-mas"
+                                to={propiedad.id === 1 ? "/casa-playa-pu" : propiedad.id === 2 ? "/bungalow-f" : `/propiedad/${propiedad.id}`}
                             >
                                 Ver más
                             </Link>
                         </div>
                     ))
                 ) : (
-                    <p id="listado-mensaje-vacio" className="mensaje-vacio">No se encontraron propiedades.</p>
+                    <p className="mensaje-vacio">No se encontraron propiedades.</p>
                 )}
             </div>
         </div>

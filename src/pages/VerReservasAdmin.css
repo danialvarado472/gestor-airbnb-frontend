@@ -1,0 +1,64 @@
+.reservas-admin-container {
+    display: flex; /* Usamos flex para que los contenedores se organicen en filas */
+    flex-direction: row; /* Los contenedores se apilan verticalmente */
+    gap: 22px; /* Espacio entre cada contenedor de reserva */
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+.reserva-contenedor {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 10px; /* Ancho mínimo para cada contenedor */
+    max-width: 320px;
+}
+
+.reserva-info {
+    margin-bottom: 10px;
+}
+
+.reserva-info p {
+    margin: 5px 0;
+    color: #000000;
+    font-size: 0.9em;
+}
+
+.reserva-info strong {
+    font-weight: bold;
+    color: #000000;
+}
+
+.eliminar-boton {
+    background-color: #ff6f00;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 6px 10px;
+    cursor: pointer;
+    font-size: 0.8em;
+    transition: background-color 0.3s ease;
+    align-self: flex-end;
+}
+
+.eliminar-boton:hover {
+    background-color: #ffb803;
+}
+
+.lista-vacia {
+    padding: 20px;
+    color: #777;
+    text-align: center;
+}
+
+.admin-reservas-titulo {
+    color: #000000;
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-align: center;
+}

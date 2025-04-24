@@ -10,6 +10,7 @@ import AdminNavbar from "./components/AdminNavbar";
 import VerPropiedadesAdmin from "./pages/VerPropiedadesAdmin";
 import AgregarPropiedadAdmin from "./pages/AgregarPropiedadAdmin";
 import EliminarPropiedadAdmin from "./pages/EliminarPropiedadAdmin";
+import VerReservasAdmin from './pages/VerReservasAdmin';
 import UserPages from './pages/UserPages';
 import "./App.css";
 
@@ -32,6 +33,7 @@ const AppContent = () => {
                 <Route path="/admin/propiedades" element={<VerPropiedadesAdmin />} />
                 <Route path="/admin/agregar-propiedad" element={<AgregarPropiedadAdmin />} />
                 <Route path="/admin/eliminar-propiedad" element={<EliminarPropiedadAdmin />} />
+                <Route path="/admin/reservas" element={<VerReservasAdmin />} />
             </Routes>
         </>
     );

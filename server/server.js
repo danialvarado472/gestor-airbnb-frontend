@@ -13,6 +13,9 @@ let propiedades = [
     { id: 3, nombre: 'Apartamento en Tamarindo', descripcion: 'Cerca de la vida nocturna', precioNoche: 150, foto: null }
 ];
 
+let reservas = [];
+let nextReservaId = 1;
+
 app.get('/api/propiedades', (req, res) => {
     const propiedadesConTarifaDinamica = propiedades.map(propiedad => {
         const factor = 0.8 + Math.random() * 0.4;
@@ -23,7 +26,6 @@ app.get('/api/propiedades', (req, res) => {
 });
 
 app.post('/api/propiedades', (req, res) => {
-    console.log('Cuerpo de la petición POST:', req.body);
     const nuevaPropiedad = {
         id: propiedades.length + 1,
         nombre: req.body.nombre,
@@ -39,6 +41,36 @@ app.delete('/api/propiedades/:id', (req, res) => {
     const idToDelete = parseInt(req.params.id);
     propiedades = propiedades.filter(propiedad => propiedad.id !== idToDelete);
     res.json({ mensaje: `Propiedad con ID ${idToDelete} eliminada con éxito` });
+});
+
+app.post('/api/reservas', (req, res) => {
+    const nuevaReserva = {
+        id: nextReservaId++,
+        ...req.body
+    };
+    reservas.push(nuevaReserva);
+    console.log('Nueva reserva guardada:', nuevaReserva);
+    res.status(201).json({ mensaje: 'Reserva realizada con éxito', reserva: nuevaReserva }); // Usar 201 para creación exitosa
+});
+
+app.get('/api/reservas', (req, res) => {
+    res.json(reservas);
+});
+
+// Ruta para eliminar una reserva por su ID
+app.delete('/api/reservas/:id', (req, res) => {
+    const idToDelete = parseInt(req.params.id);
+    const initialLength = reservas.length;
+    reservas = reservas.filter(reserva => reserva.id !== idToDelete);
+    if (reservas.length < initialLength) {
+        res.json({ mensaje: `Reserva con ID ${idToDelete} eliminada con éxito` });
+    } else {
+        res.status(404).json({ mensaje: `No se encontró ninguna reserva con el ID ${idToDelete}` });
+    }
+});
+
+app.get('/admin/reservas', (req, res) => {
+    res.json(reservas);
 });
 
 app.listen(port, () => {

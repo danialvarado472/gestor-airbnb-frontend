@@ -21,6 +21,9 @@ const AdminNavbar = () => {
                         <Link to="/admin/eliminar-propiedad" className="admin-navbar-link">Eliminar Propiedades</Link>
                     </li>
                     <li className="admin-navbar-item">
+                        <Link to="/admin" className="admin-navbar-link">Inicio</Link>
+                    </li>
+                    <li className="admin-navbar-item">
                         <Link to="/" className="admin-navbar-link">Salir</Link>
                     </li>
                 </ul>
