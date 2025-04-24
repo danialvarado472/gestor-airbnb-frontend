@@ -4,6 +4,7 @@ import './VerReservasAdmin.css';
 function VerReservasAdmin() {
     const [reservasAdmin, setReservasAdmin] = useState([]);
     const [error, setError] = useState(null);
+    const [mensajeEliminado, setMensajeEliminado] = useState(null);
 
     const fetchReservas = () => {
         fetch('http://localhost:3001/api/reservas')
@@ -28,7 +29,6 @@ function VerReservasAdmin() {
     }, []);
 
     const handleEliminarReserva = (id) => {
-
         fetch(`http://localhost:3001/api/reservas/${id}`, {
             method: 'DELETE',
         })
@@ -41,6 +41,10 @@ function VerReservasAdmin() {
             })
             .then(data => {
                 console.log('Reserva eliminada:', data.mensaje);
+                setMensajeEliminado('¡Reserva eliminada con éxito!');
+                setTimeout(() => {
+                    setMensajeEliminado(null);
+                }, 3000); // El mensaje desaparece después de 3 segundos
                 fetchReservas();
             })
             .catch(error => {
@@ -56,6 +60,7 @@ function VerReservasAdmin() {
     return (
         <div>
             <h2 className="admin-reservas-titulo">Lista de Reservas</h2>
+            {mensajeEliminado && <div className="mensaje-exito">{mensajeEliminado}</div>} {/* Mostrar mensaje si existe */}
             {reservasAdmin.length > 0 ? (
                 <div className="reservas-admin-container">
                     {reservasAdmin.map(reserva => (
