@@ -25,13 +25,13 @@ const Comentarios = ({ propiedadId, onComentarioEnviado }) => {
                 console.log('Comentario enviado:', data.comentario);
                 setNuevoComentario("");
                 if (onComentarioEnviado) {
-                    onComentarioEnviado(data.comentario); // Llama a la función para actualizar la lista en el padre
+                    onComentarioEnviado(data.comentario);
                 }
             } catch (error) {
                 console.error('Error al enviar el comentario:', error);
             }
         } else if (nuevoComentario.trim()) {
-            // Si no hay propiedadId, manejamos el comentario localmente (como antes)
+
             if (onComentarioEnviado) {
                 onComentarioEnviado(nuevoComentario);
             }

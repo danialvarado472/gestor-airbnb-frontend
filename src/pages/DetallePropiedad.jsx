@@ -24,6 +24,7 @@ const DetallePropiedad = () => {
     const [precioEstimado, setPrecioEstimado] = useState(0);
     const costoAdicionalAdulto = 15;
     const costoAdicionalNino = 10;
+    const [reservaCreadaMensaje, setReservaCreadaMensaje] = useState(null);
 
     useEffect(() => {
         const calcularTemporada = () => {
@@ -45,7 +46,7 @@ const DetallePropiedad = () => {
 
                 // Temporada media: Marzo - Abril, Mayo 1 - Junio 30, Agosto 16 - Noviembre
                 const esTemporadaMediaInicio = (mesInicio >= 2 && mesInicio <= 3) || (mesInicio === 4 && diaInicio >= 1 && diaInicio <= 30) || (mesInicio >= 7 && diaInicio >= 16 && mesInicio <= 10);
-                const esTemporadaMediaFin = (mesFin >= 2 && mesFin <= 3) || (mesFin === 4 && diaFin >= 1 && diaFin <= 30) || (mesFin >= 7 && diaFin >= 16 && mesFin <= 10);
+                const esTemporadaMediaFin = (mesFin >= 2 && mesFin <= 3) || (mesFin === 4 && diaFin >= 1 && diaFin <= 30) || (mesFin >= 7 && mesFin >= 16 && mesFin <= 10);
 
                 if (esTemporadaMediaInicio || esTemporadaMediaFin) {
                     return 'media';
@@ -61,9 +62,9 @@ const DetallePropiedad = () => {
         const calcularPrecio = () => {
             let precio = propiedad?.precioNoche || 0;
             if (temporadaActual === 'alta') {
-                precio *= 1.2; // Ejemplo de aumento del 20%
+                precio *= 1.2; //  aumento del 20%
             } else if (temporadaActual === 'media') {
-                precio *= 1.1; // Ejemplo de aumento del 10% para temporada media
+                precio *= 1.1; // aumento del 10%
             }
             const adultosAdicionales = Math.max(0, adultos - 1);
             precio += adultosAdicionales * costoAdicionalAdulto;
@@ -95,7 +96,7 @@ const DetallePropiedad = () => {
 
                 if (propiedadEncontrada) {
                     setPropiedad(propiedadEncontrada);
-                    setPrecioEstimado(propiedadEncontrada?.precioNoche || 0); // Inicializar precio al cargar la propiedad
+                    setPrecioEstimado(propiedadEncontrada?.precioNoche || 0);
                 } else {
                     setError('Propiedad no encontrada.');
                 }
@@ -148,6 +149,7 @@ const DetallePropiedad = () => {
 
             setMensajeReservaEstado('success');
             setMensajeReserva('¡Reserva enviada con éxito!');
+            setReservaCreadaMensaje('¡Felicidades, tu reserva fue creada!');
             setNombreReserva('');
             setEmailReserva('');
             setAdultos(1);
@@ -155,7 +157,10 @@ const DetallePropiedad = () => {
             setFechaInicioReserva('');
             setFechaFinReserva('');
             setMensajeReserva('');
-            setTimeout(() => setMensajeReservaEstado(null), 5000);
+            setTimeout(() => {
+                setMensajeReservaEstado(null);
+                setReservaCreadaMensaje(null);
+            }, 5000);
 
         } catch (error) {
             console.error('Error al enviar la reserva:', error);
@@ -218,6 +223,7 @@ const DetallePropiedad = () => {
                             <textarea id="mensaje" value={mensajeReserva} onChange={(e) => setMensajeReserva(e.target.value)} />
                         </div>
                         <button type="submit">Enviar Reserva</button>
+                        {reservaCreadaMensaje && <p className="mensaje-exito">{reservaCreadaMensaje}</p>} {/* Mensaje debajo del botón */}
                         {mensajeReservaEstado === 'success' && <p className="mensaje-exito">{mensajeReserva}</p>}
                         {mensajeReservaEstado === 'error' && <p className="mensaje-error">{mensajeReserva}</p>}
                     </form>
