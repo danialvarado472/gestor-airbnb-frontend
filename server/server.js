@@ -11,7 +11,6 @@ app.use(express.urlencoded({ extended: true }));
 let propiedades = [
     { id: 1, nombre: 'Casa de Playa en Punta Uva', descripcion: 'A 200mts de la playa', precioNoche: 120, foto: null },
     { id: 2, nombre: 'Bungalow Escape La Fortuna', descripcion: 'Incluye pase a aguas termales', precioNoche: 90, foto: null },
-    { id: 3, nombre: 'Apartamento en Tamarindo', descripcion: 'Cerca de la vida nocturna', precioNoche: 150, foto: null }
 ];
 
 let reservas = [];

@@ -19,9 +19,10 @@
 }
 
 #lista-reservas-contenedor-listado {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1px;
+    display: flex;
+    flex-direction: row;
+    gap: 22px;
+    flex-wrap: wrap;
 }
 
 .reserva-contenedor {
@@ -33,6 +34,9 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    min-width: 300px;
+    max-width: 320px;
+    flex-grow: 0;
 }
 
 .reserva-info {
