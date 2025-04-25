@@ -11,7 +11,7 @@ const Registro = () => {
     const [mostrarContrasena, setMostrarContrasena] = useState(false);
     const navigate = useNavigate();
 
-    const handleRegistro = (e) => {
+    const handleRegistro = async (e) => {
         e.preventDefault();
 
         if (!usuario || !contrasena) {
@@ -19,16 +19,27 @@ const Registro = () => {
             return;
         }
 
+        try {
+            const response = await fetch('http://localhost:3001/api/auth/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ usuario, contrasena }),
+            });
 
-        if (
-            (usuario === "admin" && contrasena === "1234") ||
-            (usuario === "usuario" && contrasena === "abcd")
-        ) {
-            setError("");
+            const data = await response.json();
 
-            navigate("/login");
-        } else {
-            setError("Credenciales inválidas para el registro.");
+            if (response.ok) {
+                setError("");
+                console.log('Registro exitoso:', data);
+                navigate("/login");
+            } else {
+                setError(data.message || "Error al registrar el usuario.");
+            }
+        } catch (error) {
+            console.error('Error al comunicarse con el servidor:', error);
+            setError("Error al registrar. Inténtalo de nuevo.");
         }
     };
 

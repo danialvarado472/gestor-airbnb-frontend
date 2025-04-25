@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const bcrypt = require('bcrypt');
 const app = express();
 const port = 3001;
 
@@ -15,6 +16,11 @@ let propiedades = [
 
 let reservas = [];
 let nextReservaId = 1;
+
+
+const usuarios = [];
+let nextUserId = 1;
+const saltRounds = 10;
 
 app.get('/api/propiedades', (req, res) => {
     const propiedadesConTarifaDinamica = propiedades.map(propiedad => {
@@ -71,6 +77,61 @@ app.delete('/api/reservas/:id', (req, res) => {
 
 app.get('/admin/reservas', (req, res) => {
     res.json(reservas);
+});
+
+// Rutas de autenticación
+app.post('/api/auth/register', async (req, res) => {
+    const { usuario, contrasena } = req.body;
+
+    if (!usuario || !contrasena) {
+        return res.status(400).json({ message: 'Usuario y contraseña son requeridos.' });
+    }
+
+    const usuarioExistente = usuarios.find(u => u.usuario === usuario);
+    if (usuarioExistente) {
+        return res.status(409).json({ message: 'El usuario ya existe.' });
+    }
+
+    try {
+        const hashedPassword = await bcrypt.hash(contrasena, saltRounds);
+        const nuevoUsuario = {
+            id: nextUserId++,
+            usuario,
+            contrasena: hashedPassword,
+            rol: usuario === 'admin' ? 'admin' : 'usuario' // Simulación de roles
+        };
+        usuarios.push(nuevoUsuario);
+        console.log('Usuario registrado:', nuevoUsuario);
+        res.status(201).json({ message: 'Usuario registrado con éxito.' });
+    } catch (error) {
+        console.error('Error al registrar usuario:', error);
+        res.status(500).json({ message: 'Error al registrar el usuario.' });
+    }
+});
+
+app.post('/api/auth/login', async (req, res) => {
+    const { usuario, contrasena } = req.body;
+
+    if (!usuario || !contrasena) {
+        return res.status(400).json({ message: 'Usuario y contraseña son requeridos.' });
+    }
+
+    const usuarioEncontrado = usuarios.find(u => u.usuario === usuario);
+    if (!usuarioEncontrado) {
+        return res.status(401).json({ message: 'Credenciales incorrectas.' });
+    }
+
+    try {
+        const match = await bcrypt.compare(contrasena, usuarioEncontrado.contrasena);
+        if (match) {
+            res.json({ message: 'Inicio de sesión exitoso.', rol: usuarioEncontrado.rol });
+        } else {
+            res.status(401).json({ message: 'Credenciales incorrectas.' });
+        }
+    } catch (error) {
+        console.error('Error al iniciar sesión:', error);
+        res.status(500).json({ message: 'Error al iniciar sesión.' });
+    }
 });
 
 app.listen(port, () => {

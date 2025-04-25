@@ -37,12 +37,12 @@
 }
 
 .navbar-link {
-    color: #ffb73c;
+    color: #ffb803;
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s ease;
 }
 
 .navbar-link:hover {
-    color: rgba(255, 234, 190, 0.8);
+    color: rgb(244, 133, 47);
 }

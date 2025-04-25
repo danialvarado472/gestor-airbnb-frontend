@@ -1,3 +1,4 @@
+// Inicio.jsx
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import './Inicio.css';
@@ -11,18 +12,39 @@ const Inicio = () => {
     const [mostrarContrasena, setMostrarContrasena] = useState(false);
     const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         if (!usuario || !contrasena) {
             setError('Por favor, introduce usuario y contraseña.');
             return;
         }
-        if (usuario === 'admin' && contrasena === '1234') {
-            navigate('/admin');
-        } else if (usuario === 'usuario' && contrasena === 'abcd') {
-            navigate('/inicio-usuario');
-        } else {
-            setError('Credenciales incorrectas');
+
+        try {
+            const response = await fetch('http://localhost:3001/api/auth/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ usuario, contrasena }),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                // Aquí guardarías el token o la información de sesión
+                console.log('Inicio de sesión exitoso:', data);
+                if (data.rol === 'admin') {
+                    navigate('/admin');
+                } else {
+                    navigate('/inicio-usuario');
+                }
+            } else {
+                setError(data.message || 'Credenciales incorrectas');
+                setTimeout(() => setError(''), 3000);
+            }
+        } catch (error) {
+            console.error('Error al iniciar sesión:', error);
+            setError('Error al iniciar sesión. Inténtalo de nuevo.');
             setTimeout(() => setError(''), 3000);
         }
     };
